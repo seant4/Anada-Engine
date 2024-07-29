@@ -13,8 +13,3 @@ class Room{
 	std::vector<Object*> getObjects();
 };
 
-class Room1 : public Room{
-	public:
-		void update(int key);
-};
-

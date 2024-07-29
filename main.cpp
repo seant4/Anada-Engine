@@ -4,6 +4,7 @@
 #include <vector>
 #include "./lib/Object.cpp"
 #include "./lib/Room.cpp"
+#include "./lib/Rooms/Room1.cpp"
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
