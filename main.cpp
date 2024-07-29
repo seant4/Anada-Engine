@@ -56,7 +56,7 @@ int main(int argc, char* args[]){
 						room1.update(4);
 						break;
 				}
-			}			
+			}
 		}
 		SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0,0,0));
 		room1.draw(screenSurface);
@@ -64,7 +64,6 @@ int main(int argc, char* args[]){
 	}
 
 	SDL_DestroyWindow(window);
-	SDL_FreeSurface(screenSurface);
 	// TODO: Deconstructors
 	SDL_Quit();
 	return 0;
