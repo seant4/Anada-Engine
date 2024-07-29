@@ -6,11 +6,14 @@ Room::Room(){
 	n = 0;
 }
 
-void Room::create(){
-	for(int i = 0; i < n; i++){
-		objects[i]->setObjects(objects);
+Room::~Room(){
+	//Free objects added to room
+	//Change later for persistant objects
+	for(int i = 0; i < objects.size(); i++){ 
+		delete objects[i];
 	}
 }
+
 
 void Room::draw(SDL_Surface* s){
 	for(int i = 0; i < n; i++){

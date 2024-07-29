@@ -7,9 +7,11 @@ class Room{
 		int n;
 
 	Room();
-	void create();
+	~Room();
+	void update();
 	void draw(SDL_Surface* s);
 	void addObject(Object* p);
+	virtual void create() = 0;
 	std::vector<Object*> getObjects();
 };
 

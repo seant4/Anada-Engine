@@ -31,15 +31,10 @@ int main(int argc, char* args[]){
 	}
 
 	screenSurface = SDL_GetWindowSurface(window);
-
 	bool quit = false;
 	SDL_Event e;
 	// Create initial variables
-	Player* sean = new Player(50,50,50,50,true, "Sean");
-	Player* joe = new Player(101,101,50,50,false, "Joe");
 	Room1 room1;
-	room1.addObject(sean);
-	room1.addObject(joe);
 	room1.create();
 	while(!quit){
 		while(SDL_PollEvent(&e) != 0){
@@ -71,8 +66,6 @@ int main(int argc, char* args[]){
 	SDL_DestroyWindow(window);
 	SDL_FreeSurface(screenSurface);
 	// TODO: Deconstructors
-	delete sean;
-	delete joe;
 	SDL_Quit();
 	return 0;
 }
