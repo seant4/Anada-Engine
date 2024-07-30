@@ -30,7 +30,7 @@ void Room1::update(int key){
 					objects[i]->update(prev_x, prev_y-3);
 				}
 			}else if(key == 2){
-				if(!((prev_y+3) >= 480)){	
+				if(!((prev_y+3) >= 720)){	
 					objects[i]->update(prev_x, prev_y+3);
 				}
 			}else if(key == 3){
@@ -38,7 +38,7 @@ void Room1::update(int key){
 					objects[i]->update(prev_x-3, prev_y);
 				}
 			}else if(key == 4){
-				if(!((prev_x+3) >= 640)){	
+				if(!((prev_x+3) >= 1280)){	
 					objects[i]->update(prev_x+3, prev_y);
 				}
 			}else{

@@ -21,8 +21,12 @@ Frog::Frog(int x_in, int y_in, int w_in, int h_in, bool c_in, std::string name_i
 	//Push texture to renderer
 	SDL_Rect dstrect = {x_in,y_in,400,400};
 	SDL_RenderCopy(r_in, texture, NULL, &dstrect);
+	SDL_FreeSurface(image);
 }
 
+Frog::~Frog(){
+	SDL_DestroyTexture(texture);
+}
 void Frog::draw(SDL_Renderer* r) const {
 	//Push updated position to renderer
 	SDL_Rect dstrect = {x,y,400,400};
