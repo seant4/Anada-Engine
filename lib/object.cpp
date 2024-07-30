@@ -50,35 +50,15 @@ std::string Object::getName(){
 	return name;
 }
 
-Player::Player(int x_in, int y_in, int w_in, int h_in, bool c_in, std::string name_in) : Object(x_in, y_in, w_in, h_in, c_in, name_in){
-}
-
-void Player::draw(SDL_Surface* s) const {
-	SDL_Rect rect;
-	rect.x=x;
-	rect.y=y;
-	rect.h=h;
-	rect.w=w;
-	SDL_FillRect(s, &rect, SDL_MapRGB(s -> format, 0xFF, 0xFF, 0xFF));
-}
-
-void Player::update(int x_in, int y_in) {
-	Player* future = new Player(x_in, y_in, w,h,c,name);
-	bool col = future->isColliding(objects);
-	if(!col){
-		Object::setX(x_in);
-		Object::setY(y_in);
-	}
-	delete future;
-}
-
-bool Player::isColliding(std::vector<Object*> objects){
-	for(int i = 0; i < objects.size(); i++){
-		if(this->name != objects[i]->getName()){
-			if(rectCollision(this, objects[i])==true){
-				return true;
-			}
-		}
-	}
+bool Object::isColliding(std::vector<Object*> objects_in){
 	return false;
+}
+
+void Object::draw(SDL_Renderer* r){
+	SDL_Rect dstrect = {x,y,w,h};
+	SDL_RenderCopy(r, texture, NULL, &dstrect);
+}
+
+void Object::update(int x_in, int y_in){
+
 }

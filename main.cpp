@@ -6,14 +6,14 @@
 #include "./lib/Room.cpp"
 #include "./lib/Rooms/Room1.cpp"
 
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
 
 int main(int argc, char* args[]){
 
 	//Window initialization
 	SDL_Window* window = NULL;
-	SDL_Surface* screenSurface = NULL;
+	SDL_Renderer* renderer = NULL;
 	if (SDL_Init(SDL_INIT_VIDEO) < 0){
 		fprintf(stderr, "Could not initialize sdl2: %s\n", SDL_GetError());
 		return 1;
@@ -25,17 +25,19 @@ int main(int argc, char* args[]){
 			SCREEN_WIDTH, SCREEN_HEIGHT,
 			SDL_WINDOW_SHOWN
 			);
+
 	if (window == NULL){
 		fprintf(stderr, "Could not create window: %s\n", SDL_GetError());
 		return 1;
 	}
+	//Create renderer
+	renderer = SDL_CreateRenderer(window,-1,0);
 
-	screenSurface = SDL_GetWindowSurface(window);
 	bool quit = false;
 	SDL_Event e;
 	// Create initial variables
 	Room1 room1;
-	room1.create();
+	room1.create(renderer);
 	while(!quit){
 		while(SDL_PollEvent(&e) != 0){
 			if(e.type==SDL_QUIT){
@@ -58,9 +60,8 @@ int main(int argc, char* args[]){
 				}
 			}
 		}
-		SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0,0,0));
-		room1.draw(screenSurface);
-		SDL_UpdateWindowSurface(window);
+		// TODO: Update screen refreshing
+		room1.draw(renderer);
 	}
 
 	SDL_DestroyWindow(window);

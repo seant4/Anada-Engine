@@ -3,15 +3,17 @@
 
 class Object {
 	public:
-		int x;
-		int y;
-		int w;
-		int h;
-		std::vector<Object*> objects;
-		bool c;
-		std::string name;
+		int x; //Objects x position
+		int y; //Objects y position
+		int w; //Object width
+		int h; //Object height
+		std::vector<Object*> objects; //All objects in room
+		bool c; //Controllable boolean
+		std::string name; //Name of object
+		SDL_Texture* texture; //Object sprite (texture)
 
-		Object(int x_in, int y_in, int w_in, int h_in, bool c_in, std::string name_in);
+		Object(int x_in, int y_in, int w_in, int h_in, bool c_in, std::string name_in); //Constructor
+		//Getters and setter
 		int getX();
 		int getY();
 		int getW();
@@ -21,16 +23,15 @@ class Object {
 		void setObjects(std::vector<Object*> objects);
 		bool playerControll();
 		std::string getName();
-		virtual void draw(SDL_Surface* s) const = 0;
-		virtual void update(int x_in, int y_in) = 0;
-		virtual bool isColliding(std::vector<Object*> objects) = 0;
+
+		//Draw object
+		virtual void draw(SDL_Renderer* r);
+		//Update object
+		virtual void update(int x_in, int y_in);
+
+		//Collision detection
+		virtual bool isColliding(std::vector<Object*> objects);
 };
 
 
-class Player : public Object{
-	public:
-		Player(int x_in, int y_in, int w_in, int h_in, bool c_in, std::string name_in);
-		void draw(SDL_Surface* s) const override;
-		void update(int x_in, int y_in) override;
-		bool isColliding(std::vector<Object*> objects) override;
-};
+

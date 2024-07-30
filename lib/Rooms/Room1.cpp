@@ -1,14 +1,16 @@
 #include "Room1.h"
-
+#include "../Objects/Frog.cpp"
+/* Example room implementation
+ * 
+ * This room loads our Frog object
+ */
 // Room 1 logic -------------------------------------------------------------
 
-void Room1::create(){	
+void Room1::create(SDL_Renderer* r_in){	
+	r = r_in;	
 	//Add objects to my room
-	Player* sean = new Player(50,50,50,50,true,"Sean");
-	Player* joe = new Player(101,101,50,50,false,"Joe");
-	this->addObject(sean);
-	this->addObject(joe);
-
+	Frog* frog1 = new Frog(400,400,50,50,true,"Frog", r_in);
+	this->addObject(frog1);
 	//This ensures objects have access to the other objects in the room
 	for(int i = 0; i < objects.size(); i++){
 		objects[i]->setObjects(objects);
@@ -22,6 +24,7 @@ void Room1::update(int key){
 		if(objects[i]->playerControll()){
 			int prev_x = objects[i]->getX();
 			int prev_y = objects[i]->getY();
+			//Send keyboard input to object
 			if(key == 1){
 				if(!((prev_y-3) <= 0)){
 					objects[i]->update(prev_x, prev_y-3);

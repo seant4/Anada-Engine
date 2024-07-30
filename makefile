@@ -3,6 +3,8 @@ compile:./main.cpp
 
 debug:./main.cpp
 	g++ main.cpp -g -o app -lSDL2
+
+leak:
 	valgrind --leak-check=yes ./app
 
 run:
