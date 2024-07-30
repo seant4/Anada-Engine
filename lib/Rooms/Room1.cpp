@@ -9,7 +9,7 @@
 void Room1::create(SDL_Renderer* r_in){	
 	r = r_in;	
 	//Add objects to my room
-	Frog* frog1 = new Frog(400,400,50,50,true,"Frog", r_in);
+	Frog* frog1 = new Frog(50,50,400,400,true,"Frog", r_in);
 	this->addObject(frog1);
 	//This ensures objects have access to the other objects in the room
 	for(int i = 0; i < objects.size(); i++){
