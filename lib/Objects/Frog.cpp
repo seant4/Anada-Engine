@@ -1,6 +1,5 @@
 #include "Frog.h"
 #include <stdio.h>
-
 /* Example object
  *
  * This is an example of an implemented object, it has a sprite, collision detection,
@@ -9,22 +8,13 @@
 
 Frog::Frog(int x_in, int y_in, int w_in, int h_in, bool c_in, std::string name_in, SDL_Renderer* r_in) : Object(x_in, y_in, w_in, h_in, c_in, name_in){
 	//Load image
-	SDL_Surface* image = SDL_LoadBMP("./assets/sprites/frog.bmp");
-	if(image == NULL){
-		printf("Image could not be loaded: %s\n", SDL_GetError());
-	}
-	//Create texture
-	texture = SDL_CreateTextureFromSurface(r_in, image);
-	if(texture == NULL){
-		printf("Texture could not be created: %s\n", SDL_GetError());
-	}
-	//Push texture to renderer
-	SDL_FreeSurface(image);
+	texture = createTexture("./assets/sprites/frog.bmp", r_in);
 }
 
 Frog::~Frog(){
 	SDL_DestroyTexture(texture);
 }
+
 void Frog::update(int x_in, int y_in) {
 	//Collision detection
 	Object* future = new Object(x_in, y_in,w,h,c,"Future");

@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 #include "Object.h"
-#include "Collision.cpp"
 
 Object::Object(int x_in, int y_in, int w_in, int h_in,bool c_in, std::string name_in){
 	x=x_in;
@@ -61,4 +60,33 @@ void Object::draw(SDL_Renderer* r){
 
 void Object::update(int x_in, int y_in){
 
+}
+
+bool Object::rectCollision(Object* obj1, Object* obj2){
+	int x1r = obj1->getX() + obj1->getW();
+	int y1b = obj1->getY() + obj1->getH();
+	int x2r = obj2->getX() + obj2->getW();
+	int y2b = obj2->getY() + obj2->getH();
+	if(obj1->getX() >= x2r || obj2->getX() >= x1r){
+		return false;
+	}
+
+	if(obj1->getY() >= y2b || obj2->getY() >= y1b){
+		return false;
+	}
+
+	return true;
+}
+
+SDL_Texture* Object::createTexture(char* p, SDL_Renderer* r_in){
+	SDL_Surface* image = SDL_LoadBMP(p);
+	if(image == NULL){
+		printf("Image could not be loaded: %s\n", SDL_GetError());
+	}
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(r_in, image);
+	if(texture == NULL){
+		printf("Texture could not be created: %s\n", SDL_GetError());
+	}
+	SDL_FreeSurface(image);
+	return texture;
 }

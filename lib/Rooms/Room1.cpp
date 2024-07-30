@@ -1,5 +1,6 @@
 #include "Room1.h"
 #include "../Objects/Frog.cpp"
+
 /* Example room implementation
  * 
  * This room loads our Frog object
@@ -9,12 +10,23 @@
 void Room1::create(SDL_Renderer* r_in){	
 	r = r_in;	
 	//Add objects to my room
-	Frog* frog1 = new Frog(50,50,400,400,true,"Frog", r_in);
+	Frog* frog1 = new Frog(50,80,400,400,false,"Frog", r_in);
 	this->addObject(frog1);
 	//This ensures objects have access to the other objects in the room
 	for(int i = 0; i < objects.size(); i++){
 		objects[i]->setObjects(objects);
 	}
+	// Create background	
+	background = createTexture("./assets/sprites/background.bmp", r);
+}
+void Room1::draw(SDL_Renderer* r){
+	//Make sure to render background first	
+	SDL_RenderCopy(r, background, NULL, NULL);
+	//Render everything else on top	
+	for(int i = 0; i < n; i++){
+		objects[i]->draw(r);
+	}
+	SDL_RenderPresent(r);
 }
 
 void Room1::update(int key){
@@ -30,7 +42,7 @@ void Room1::update(int key){
 					objects[i]->update(prev_x, prev_y-3);
 				}
 			}else if(key == 2){
-				if(!((prev_y+3) >= 720)){	
+				if(!((prev_y+3) >= 480)){	
 					objects[i]->update(prev_x, prev_y+3);
 				}
 			}else if(key == 3){
@@ -38,7 +50,7 @@ void Room1::update(int key){
 					objects[i]->update(prev_x-3, prev_y);
 				}
 			}else if(key == 4){
-				if(!((prev_x+3) >= 1280)){	
+				if(!((prev_x+3) >= 640)){	
 					objects[i]->update(prev_x+3, prev_y);
 				}
 			}else{

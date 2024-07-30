@@ -14,5 +14,6 @@ class Room{
 	void addObject(Object* p);
 	void create(SDL_Renderer* r);
 	std::vector<Object*> getObjects();
+	SDL_Texture* createTexture(char* p, SDL_Renderer* r_in);
 };
 

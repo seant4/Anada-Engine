@@ -31,6 +31,8 @@ class Object {
 
 		//Collision detection
 		virtual bool isColliding(std::vector<Object*> objects);
+		bool rectCollision(Object* obj1, Object* obj2);
+		SDL_Texture* createTexture(char* p, SDL_Renderer* r_in);
 };
 
 

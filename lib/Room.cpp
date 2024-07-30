@@ -15,7 +15,7 @@ Room::~Room(){
 }
 
 // Draws all objects in the room
-void Room::draw(SDL_Renderer* r){
+void Room::draw(SDL_Renderer* r){	
 	for(int i = 0; i < n; i++){
 		objects[i]->draw(r);
 	}
@@ -35,3 +35,15 @@ std::vector<Object*> Room::getObjects(){
 }
 
 
+SDL_Texture* Room::createTexture(char* p, SDL_Renderer* r_in){
+	SDL_Surface* image = SDL_LoadBMP(p);
+	if(image == NULL){
+		printf("Image could not be loaded: %s\n", SDL_GetError());
+	}
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(r_in, image);
+	if(texture == NULL){
+		printf("Texture could not be created: %s\n", SDL_GetError());
+	}
+	SDL_FreeSurface(image);
+	return texture;
+}

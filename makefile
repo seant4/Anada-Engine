@@ -1,5 +1,5 @@
 compile:./main.cpp
-	g++ main.cpp -o app -lSDL2
+	g++ -o app main.cpp -lSDL2
 
 debug:./main.cpp
 	g++ main.cpp -g -o app -lSDL2
