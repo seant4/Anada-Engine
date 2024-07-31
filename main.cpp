@@ -2,21 +2,21 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
-#include "./lib/Object.cpp"
-#include "./lib/Room.cpp"
-#include "./lib/Rooms/Room1.cpp"
+#include "./lib/Object.h"
+#include "./lib/RoomManager.h"
+#include "./lib/Objects/Frog.h"
+#include "./lib/Rooms/Room1.h"
+#include "./lib/Room.h"
+#include "./lib/Rooms/Room2.h"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 
-int main(int argc, char* args[]){
-
+SDL_Renderer* initRender(SDL_Window* window){
 	//Window initialization
-	SDL_Window* window = NULL;
 	SDL_Renderer* renderer = NULL;
 	if (SDL_Init(SDL_INIT_VIDEO) < 0){
 		fprintf(stderr, "Could not initialize sdl2: %s\n", SDL_GetError());
-		return 1;
 	}
 
 	window = SDL_CreateWindow(
@@ -28,46 +28,51 @@ int main(int argc, char* args[]){
 
 	if (window == NULL){
 		fprintf(stderr, "Could not create window: %s\n", SDL_GetError());
-		return 1;
 	}
 	//Create renderer
 	renderer = SDL_CreateRenderer(window,-1,0);
+	return renderer;
+}
 
-	bool quit = false;
-	SDL_Event e;
-	// Create initial variables
-	Room1 room1;
-	room1.create(renderer);
-	while(!quit){
-		while(SDL_PollEvent(&e) != 0){
-			if(e.type==SDL_QUIT){
-				quit = true;
-			}
-			else if(e.type == SDL_KEYDOWN){ //Input handler
+int main(int argc, char* args[]){
+    SDL_Window* window = NULL;
+    SDL_Renderer* renderer = initRender(window);
+
+    bool quit = false;
+    SDL_Event e;
+    RoomManager manager;
+    manager.create(renderer);
+    manager.update(5);
+
+    while(!quit){
+        while(SDL_PollEvent(&e) != 0){
+            if(e.type==SDL_QUIT){
+                quit = true;
+            }
+			else if(e.type == SDL_KEYDOWN){
 				switch(e.key.keysym.sym){
 					case SDLK_UP:
-						room1.update(1);
+						manager.update(1);
 						break;
 					case SDLK_DOWN:
-						room1.update(2);
+						manager.update(2);
 						break;
 					case SDLK_LEFT:
-						room1.update(3);
+						manager.update(3);
 						break;
 					case SDLK_RIGHT:
-						room1.update(4);
+						manager.update(4);
 						break;
 				}
 			}
-		}
-		// TODO: Update screen refreshing
-		room1.draw(renderer);
-	}
+        }
+        manager.update(5);
+        manager.draw(renderer);
+        SDL_RenderPresent(renderer);
+    }
 
-	SDL_DestroyWindow(window);
-	SDL_DestroyRenderer(renderer);
-	// TODO: Deconstructors
-	SDL_Quit();
-	return 0;
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
+    SDL_Quit();
+    return 0;
 }
-

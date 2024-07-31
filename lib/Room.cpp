@@ -1,25 +1,16 @@
+#include <stdio.h>
 #include <SDL2/SDL.h>
-#include <string>
-#include "Room.h"
+#include "RoomManager.h"
+#include "Object.h"
 
-Room::Room(){
-	n = 0;
+void Room::update(int key){
+}
+void Room::create(SDL_Renderer* r){
+
 }
 
-Room::~Room(){
-	//Free objects added to room
-	//Change later for persistant objects
-	for(int i = 0; i < objects.size(); i++){ 
-		delete objects[i];
-	}
-}
+void Room::draw(SDL_Renderer* r){
 
-// Draws all objects in the room
-void Room::draw(SDL_Renderer* r){	
-	for(int i = 0; i < n; i++){
-		objects[i]->draw(r);
-	}
-	SDL_RenderPresent(r);
 }
 
 // Adds an object to the room
@@ -34,7 +25,6 @@ std::vector<Object*> Room::getObjects(){
 	return objects;
 }
 
-
 SDL_Texture* Room::createTexture(char* p, SDL_Renderer* r_in){
 	SDL_Surface* image = SDL_LoadBMP(p);
 	if(image == NULL){
@@ -47,3 +37,4 @@ SDL_Texture* Room::createTexture(char* p, SDL_Renderer* r_in){
 	SDL_FreeSurface(image);
 	return texture;
 }
+

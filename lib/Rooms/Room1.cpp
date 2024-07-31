@@ -1,61 +1,42 @@
 #include "Room1.h"
-#include "../Objects/Frog.cpp"
+#include "../Objects/Frog.h"
+#include "../Object.h"
 
-/* Example room implementation
- * 
- * This room loads our Frog object
- */
-// Room 1 logic -------------------------------------------------------------
+Room1::Room1(){
+    
+}
 
-void Room1::create(SDL_Renderer* r_in){	
-	r = r_in;	
-	//Add objects to my room
-	Frog* frog1 = new Frog(50,80,400,400,false,"Frog", r_in);
-	this->addObject(frog1);
-	//This ensures objects have access to the other objects in the room
+void Room1::create(SDL_Renderer* r){
+    printf("Room 1 create\n");
+    frog1 = new Frog(50,50,400,400,false,"Sean", r);
+    this->addObject(frog1);
+	floor = new Object(0,720,1280,2,false,"Floor");
+	this->addObject(floor);
 	for(int i = 0; i < objects.size(); i++){
 		objects[i]->setObjects(objects);
 	}
-	// Create background	
-	background = createTexture("./assets/sprites/background.bmp", r);
+    background = createTexture("./assets/sprites/background.bmp", r);
 }
+
 void Room1::draw(SDL_Renderer* r){
 	//Make sure to render background first	
 	SDL_RenderCopy(r, background, NULL, NULL);
 	//Render everything else on top	
-	for(int i = 0; i < n; i++){
-		objects[i]->draw(r);
-	}
+	frog1->draw(r);
 	SDL_RenderPresent(r);
 }
 
+
 void Room1::update(int key){
-	//Room update happens each frame
-	for(int i = 0; i < n; i++){
-		//Handle player controlled object
-		if(objects[i]->playerControll()){
-			int prev_x = objects[i]->getX();
-			int prev_y = objects[i]->getY();
-			//Send keyboard input to object
-			if(key == 1){
-				if(!((prev_y-3) <= 0)){
-					objects[i]->update(prev_x, prev_y-3);
-				}
-			}else if(key == 2){
-				if(!((prev_y+3) >= 480)){	
-					objects[i]->update(prev_x, prev_y+3);
-				}
-			}else if(key == 3){
-				if(!((prev_x-3) <= 0)){
-					objects[i]->update(prev_x-3, prev_y);
-				}
-			}else if(key == 4){
-				if(!((prev_x+3) >= 640)){	
-					objects[i]->update(prev_x+3, prev_y);
-				}
-			}else{
-				objects[i]->update(prev_x, prev_y);
-			}
-		}
+	//Move frog 1
+	int prev_x = frog1->getX();
+	int prev_y = frog1->getY();
+	//Send keyboard input to object
+	switch(key){
+		case 1: frog1->update(0, -3); break;
+		case 2: frog1->update(0, +3); break;
+		case 3: frog1->update(-3, 0); break;
+		case 4: frog1->update(+3, 0); break;
+		default: frog1->update(0, 0); break;
 	}
 }

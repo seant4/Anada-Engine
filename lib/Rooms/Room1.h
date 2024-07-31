@@ -1,8 +1,17 @@
-class Room1 : public Room{
-	public:
-		SDL_Texture* background;
-		//Room specific fields can be used for game logic
-		void draw(SDL_Renderer* r);
-		void update(int key);
-		void create(SDL_Renderer* r);
+#pragma once
+#include "../Room.h"
+#include "../Objects/Frog.h"
+#include "../Object.h"
+
+class Room;
+
+class Room1: public Room{
+    public:
+    	SDL_Texture* background;
+        Room1();
+		Frog* frog1;
+		Object* floor;
+        void create(SDL_Renderer* r) override;
+        void update(int key) override;
+        void draw(SDL_Renderer* r) override;
 };

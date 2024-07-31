@@ -1,11 +1,7 @@
 compile:./main.cpp
-	g++ -o app main.cpp -lSDL2
+	g++ -I ./lib/ -o app main.cpp -lSDL2 ./lib/*.cpp ./lib/Rooms/*.cpp ./lib/Objects/*.cpp
 
 debug:./main.cpp
-	g++ main.cpp -g -o app -lSDL2
-
-leak:
-	valgrind --leak-check=yes ./app
-
+	g++ -g -I ./lib/ -o app main.cpp -lSDL2 ./lib/*.cpp ./lib/Rooms/*.cpp ./lib/Objects/*.cpp
 run:
 	./app

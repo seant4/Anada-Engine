@@ -1,7 +1,13 @@
-class Frog : public Object{
-	public:
-		Frog(int x_in, int y_in, int w_in, int h_in, bool c_in, std::string name_in, SDL_Renderer* r);
-		~Frog();
-		void update(int x_in, int y_in) override;
-		bool isColliding(std::vector<Object*> objects) override;
+#pragma once
+#include "../Object.h"
+
+class Room1;
+
+class Frog: public Object{
+    public:
+        SDL_Texture* texture;
+        Frog(int xi, int yi, int wi, int hi, bool ci, std::string namei, SDL_Renderer* r);
+        ~Frog();
+        void update(int x, int y);
+		void draw(SDL_Renderer* r) override;
 };
