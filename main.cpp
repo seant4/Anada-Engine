@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <stdio.h>
 #include <string>
 #include <vector>
@@ -19,6 +20,9 @@ SDL_Renderer* initRender(SDL_Window* window){
 		fprintf(stderr, "Could not initialize sdl2: %s\n", SDL_GetError());
 	}
 
+	if(TTF_Init < 0){
+		fprintf(stderr, "Could not initialize SDL_TTF: %s\n", TTF_GetError());
+	}
 	window = SDL_CreateWindow(
 			"Hello, World!",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,

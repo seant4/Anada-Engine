@@ -38,3 +38,10 @@ SDL_Texture* Room::createTexture(char* p, SDL_Renderer* r_in){
 	return texture;
 }
 
+void Room::dispText(int x, int y, int w, int h, char* t, SDL_Renderer* r){
+	SDL_Color color = {0,0,0};
+	text = TTF_RenderText_Solid(font, t, color);
+	text_texture = SDL_CreateTextureFromSurface(r, text);
+	SDL_Rect dest = {0,0,text->w, text->h};
+	SDL_RenderCopy(r, text_texture, NULL, &dest);
+}
