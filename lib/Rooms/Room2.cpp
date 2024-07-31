@@ -1,6 +1,11 @@
 #include "Room2.h"
 #include "../Objects/Frog.h"
 
+Room2::~Room2(){
+	delete frog1;
+	delete frog2;
+}
+
 Room2::Room2(){
     
 }

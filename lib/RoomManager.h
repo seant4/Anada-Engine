@@ -11,6 +11,7 @@ class RoomManager {
         Room1* room1;
 		Room2* room2;
         int n;
+		~RoomManager();
         void update(int key);
         void create(SDL_Renderer* r);
         void draw(SDL_Renderer* r);

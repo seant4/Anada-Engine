@@ -6,6 +6,11 @@
 #include "./Rooms/Room2.h"
 #include "./roomstate.h"
 
+RoomManager::~RoomManager(){
+	delete room1;
+	delete room2;
+}
+
 void RoomManager::update(int key){
 	if(roomState == 1){
 		room1->update(key);

@@ -51,18 +51,17 @@ int main(int argc, char* args[]){
             }
 			else if(e.type == SDL_KEYDOWN){
 				switch(e.key.keysym.sym){
-					case SDLK_UP:
-						manager.update(1);
-						break;
-					case SDLK_DOWN:
-						manager.update(2);
-						break;
-					case SDLK_LEFT:
-						manager.update(3);
-						break;
-					case SDLK_RIGHT:
-						manager.update(4);
-						break;
+					case SDLK_UP: manager.update(1); break;
+					case SDLK_DOWN: manager.update(2); break;
+					case SDLK_LEFT: manager.update(3); break;
+					case SDLK_RIGHT: manager.update(4); break;
+				}
+			}else if(e.type == SDL_KEYUP){
+				switch(e.key.keysym.sym){
+					case SDLK_UP: manager.update(6); break;
+					case SDLK_DOWN: manager.update(7); break;
+					case SDLK_LEFT: manager.update(8); break;
+					case SDLK_RIGHT: manager.update(9); break;
 				}
 			}
         }

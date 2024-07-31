@@ -10,6 +10,7 @@ class Room2: public Room{
         Room2();
 		Frog* frog1;
 		Frog* frog2;
+		~Room2();
         void create(SDL_Renderer* r) override;
         void update(int key) override;
         void draw(SDL_Renderer* r) override;
