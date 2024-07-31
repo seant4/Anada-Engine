@@ -5,7 +5,8 @@ Anada Engine is a game engine written in C++ on top of the SDL2 library. The goa
 - I/O
 - Collision Detection
 - Physics
-
+- Animatoin
+- Text
 
 ## Workflow:
 The workflow is designed to give you the starting point to add your own interactivity.
@@ -20,7 +21,7 @@ From here, the idea is to use the built in rooms and objects class to add your o
 
 ## TODO:
 - ~~Physics~~
-- Sprite integration
+- ~~Sprite integration~~
 - Animation
 - Sound
 - UI
