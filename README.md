@@ -1,7 +1,7 @@
 # Anada Engine
-Nugget Engine is a game engine written in C++ on top of the SDL2 library. The goal is to create a simple and easy to use game engine for rapid development of 2d games.
+Anada Engine is a game engine written in C++ on top of the SDL2 library. The goal is to create a simple and easy to use game engine for rapid development of 2D games.
 ## Features:
-- 2d Graphics
+- 2D Graphics
 - I/O
 - Collision Detection
 - Physics
@@ -22,4 +22,6 @@ From here, the idea is to use the built in rooms and objects class to add your o
 - ~~Physics~~
 - Sprite integration
 - Animation
+- Sound
+- UI
 
