@@ -5,10 +5,14 @@
 #include <vector>
 #include "./lib/Object.h"
 #include "./lib/RoomManager.h"
+
+//Include objects and rooms here:
+/* Example
 #include "./lib/Objects/Frog.h"
 #include "./lib/Rooms/Room1.h"
+*/
+
 #include "./lib/Room.h"
-#include "./lib/Rooms/Room2.h"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720

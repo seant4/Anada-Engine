@@ -16,7 +16,7 @@ class Object{
 		std::vector<int> vel; //velocity
 		bool c; //Controllable boolean
 		std::string name; //Name of object
-        
+		int frame;        
         Object(int xi, int yi, int wi, int hi, bool ci, std::string namei);
         //Getters and setter
 		int getX();

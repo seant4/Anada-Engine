@@ -7,6 +7,7 @@ Object::Object(int xi, int yi, int wi, int hi, bool ci, std::string namei){
 	h=hi;
 	w=wi;
 	c=ci;
+	frame = 1;
 	name=namei;
 	vel.push_back(0); //Starting x velocity
 	vel.push_back(0); //Starting y velocity
