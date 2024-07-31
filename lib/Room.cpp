@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include "RoomManager.h"
+#include "Room.h"
 #include "Object.h"
 
 void Room::update(int key){
