@@ -24,7 +24,7 @@ SDL_Renderer* initRender(SDL_Window* window){
 		fprintf(stderr, "Could not initialize sdl2: %s\n", SDL_GetError());
 	}
 
-	if(TTF_Init < 0){
+	if(TTF_Init() < 0){
 		fprintf(stderr, "Could not initialize SDL_TTF: %s\n", TTF_GetError());
 	}
 	window = SDL_CreateWindow(
