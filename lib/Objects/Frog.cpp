@@ -5,7 +5,7 @@
 Frog::Frog(int xi, int yi, int wi, int hi, bool ci, std::string namei, SDL_Renderer* ri) : Object(xi, yi, wi, hi, ci, namei){
 	//Load image
 	airborne = true;
-    texture = createTexture("./assets/sprites/frog.bmp", ri);
+    texture = createTexture("./assets/sprites/frog_sheet.bmp", ri);
 }
 
 Frog::~Frog(){
@@ -40,7 +40,10 @@ void Frog::update(int x_in, int y_in) {
 }
 
 void Frog::draw(SDL_Renderer* r){
+	int woffset = w * (frame%2);
 	SDL_Rect dstrect = {x,y,w,h};
-	SDL_RenderCopy(r, texture, NULL, &dstrect);
+	SDL_Rect srcrect = {woffset,0,w,h};
+	SDL_RenderCopy(r, texture, &srcrect, &dstrect);
+	frame++;
 }
 
