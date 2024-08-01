@@ -43,41 +43,35 @@ SDL_Renderer* initRender(SDL_Window* window){
 }
 
 int main(int argc, char* args[]){
+	unsigned int a = SDL_GetTicks();
+	unsigned int b = SDL_GetTicks();
+	double delta = 0;
+	double framerate = 30.0; //Set framerate here
     SDL_Window* window = NULL;
     SDL_Renderer* renderer = initRender(window);
 
     bool quit = false;
     SDL_Event e;
-    RoomManager manager;
-    manager.create(renderer);
-    manager.update(5);
+	//Typically set up room manager here
+    //RoomManager manager;
+    //manager.create(renderer);
 
     while(!quit){
-        while(SDL_PollEvent(&e) != 0){
-            if(e.type==SDL_QUIT){
-                quit = true;
-            }
-			else if(e.type == SDL_KEYDOWN){
-				switch(e.key.keysym.sym){
-					case SDLK_UP: manager.update(1); break;
-					case SDLK_DOWN: manager.update(2); break;
-					case SDLK_LEFT: manager.update(3); break;
-					case SDLK_RIGHT: manager.update(4); break;
-				}
-			}else if(e.type == SDL_KEYUP){
-				switch(e.key.keysym.sym){
-					case SDLK_UP: manager.update(6); break;
-					case SDLK_DOWN: manager.update(7); break;
-					case SDLK_LEFT: manager.update(8); break;
-					case SDLK_RIGHT: manager.update(9); break;
-				}
-			}
-        }
-        manager.update(5);
-        manager.draw(renderer);
-        SDL_RenderPresent(renderer);
+		a = SDL_GetTicks();
+		delta = a - b;
+		if(delta > 1000/framerate){
+			b=a;
+			while(SDL_PollEvent(&e) != 0){
+            	if(e.type==SDL_QUIT){
+                	quit = true;
+            	}
+				//Handle user input here via SDL2 input handler, send this to manager
+        	}
+			//Draw room manager here
+        	//manager.draw(renderer);
+        	SDL_RenderPresent(renderer);
+		}
     }
-
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
