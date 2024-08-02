@@ -27,6 +27,32 @@ void [ObjectName]::update(int x_in, int y_in){
     *
     * setX(int x): Set object X
     * setY(int y): SEt object y
+	*
+		Full Example
+		//if in the air, cant jump
+		if(airborne){
+			y_in = 0;
+			x_in = 0;
+		}
+		//Collision detection
+		std::vector<int> fut = Object::applyPhysics(this, std::vector<int>{x_in,y_in});
+		Object* future = new Object(fut[0], fut[1],w,h,"Future");
+		if(objects.size() > 1){
+			bool col = future->rectCollision(future, objects[1]);//Check collision with floor
+			if(!col){ //Airborne
+				Object::setX(fut[0]);
+				if(fut[1] < this->getY()){//jumping
+					airborne = true;
+				}
+				Object::setY(fut[1]);
+			}else{ //Collision with floor
+				Object::setX(fut[0]);
+				vel[0] = 0;
+				vel[1] = 0; //Cant move down anymore
+				airborne = false;
+			}
+			delete future;
+		}
     */
 }
 

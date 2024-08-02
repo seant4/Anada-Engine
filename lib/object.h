@@ -14,10 +14,9 @@ class Object{
 		int h; //Object height
 		std::vector<Object*> objects; //All objects in room
 		std::vector<int> vel; //velocity
-		bool c; //Controllable boolean
 		std::string name; //Name of object
 		int frame;        
-        Object(int xi, int yi, int wi, int hi, bool ci, std::string namei);
+        Object(int xi, int yi, int wi, int hi, std::string namei);
         //Getters and setter
 		int getX();
 		int getY();

@@ -1,12 +1,11 @@
 #include "Object.h"
 #include <stdio.h>
 #include <string>
-Object::Object(int xi, int yi, int wi, int hi, bool ci, std::string namei){
+Object::Object(int xi, int yi, int wi, int hi, std::string namei){
     x=xi;
 	y=yi;
 	h=hi;
 	w=wi;
-	c=ci;
 	frame = 1;
 	name=namei;
 	vel.push_back(0); //Starting x velocity
@@ -14,7 +13,6 @@ Object::Object(int xi, int yi, int wi, int hi, bool ci, std::string namei){
 }
 
 void Object::update(){
-    printf("Hello! I am Object");
 }
 
 int Object::getX(){
@@ -31,10 +29,6 @@ int Object::getW(){
 
 int Object::getH(){
 	return h;
-}
-
-bool Object::playerControll(){
-	return c;
 }
 
 void Object::setX(int x_in){

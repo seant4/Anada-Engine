@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "../roomstate.h"
 
-Fade::Fade(int xi, int yi, int wi, int hi, bool ci, std::string namei, SDL_Renderer* ri) : Object(xi, yi, wi, hi, ci, namei){
+Fade::Fade(int xi, int yi, int wi, int hi, std::string namei, SDL_Renderer* ri) : Object(xi, yi, wi, hi, namei){
 	timer = xi;
 	amount = yi;
 	if(timer==255){

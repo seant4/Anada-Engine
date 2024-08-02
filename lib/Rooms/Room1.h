@@ -1,6 +1,5 @@
 #pragma once
 #include "../Room.h"
-#include "../Objects/Frog.h"
 #include "../Object.h"
 
 class Room;
@@ -8,8 +7,6 @@ class Room1: public Room{
     public:
     	SDL_Texture* background;
         Room1();
-		Frog* frog1;
-		Object* floor;
 		~Room1();
 		int inputArray[5];
         void create(SDL_Renderer* r) override;

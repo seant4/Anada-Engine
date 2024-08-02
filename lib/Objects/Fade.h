@@ -9,7 +9,7 @@ class Fade: public Object{
 		//xi = 255 to fade in (to transparent), 0 to fade out (to black)
 		//yi = speed of transition
 		//wi = Room to transition too (if you want the fader to handle that)
-        Fade(int xi, int yi, int wi, int hi, bool ci, std::string namei, SDL_Renderer* r);
+        Fade(int xi, int yi, int wi, int hi, std::string namei, SDL_Renderer* r);
         ~Fade();
 		Uint8 timer;
 		int fade;
