@@ -1,3 +1,4 @@
+/*Example of a room
 #include "Room1.h"
 #include "../Objects/Frog.h"
 #include "../Object.h"
@@ -55,3 +56,4 @@ void Room1::update(int key){
 	frog1->update(x_vel, y_vel);
 
 }
+*/
