@@ -15,24 +15,11 @@ class Object{
 		std::vector<Object*> objects; //All objects in room
 		std::vector<int> vel; //velocity
 		std::string name; //Name of object
-		int frame;        
         Object(int xi, int yi, int wi, int hi, std::string namei);
         //Getters and setter
-		int getX();
-		int getY();
-		int getW();
-		int getH();
-		void setX(int x_in);
-		void setY(int y_in);
 		void setObjects(std::vector<Object*> objects);
-		bool playerControll();
 		std::string getName();
-
 		//Logic functions
         virtual void update();
         virtual void draw(SDL_Renderer* r);
-        SDL_Texture* createTexture(char* p, SDL_Renderer* r);
-		bool rectCollision(Object* obj1, Object* obj2);
-		virtual bool isColliding(std::vector<Object*> objects);
-		virtual std::vector<int> applyPhysics(Object* o, std::vector<int> force );
 };

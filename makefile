@@ -1,7 +1,8 @@
 compile:./main.cpp
-	g++ -I ./lib/ -o app main.cpp -lSDL2 -lSDL2_ttf ./lib/*.cpp ./lib/Rooms/*.cpp ./lib/Objects/*.cpp
+	g++ -I ./lib/ -o app main.cpp  renderer.cpp -lSDL2 -lSDL2_ttf ./lib/*.cpp ./lib/Rooms/*.cpp ./lib/Objects/*.cpp ./lib/Modules/Physics/*.cpp ./lib/Modules/Visuals/*.cpp
 
 debug:./main.cpp
-	g++ -g -I ./lib/ -o app main.cpp -lSDL2 ./lib/*.cpp ./lib/Rooms/*.cpp ./lib/Objects/*.cpp
+	g++ -g -I ./lib/ -o app main.cpp  renderer.cpp -lSDL2 -lSDL2_ttf ./lib/*.cpp ./lib/Rooms/*.cpp ./lib/Objects/*.cpp ./lib/Modules/Physics/*.cpp ./lib/Modules/Visuals/*.cpp
+
 run:
 	./app

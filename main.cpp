@@ -5,14 +5,8 @@
 #include <vector>
 #include "./lib/Object.h"
 #include "./lib/RoomManager.h"
-
-//Include objects and rooms here:
-/* Example
-#include "./lib/Objects/Frog.h"
-#include "./lib/Rooms/Room1.h"
-*/
-
 #include "./lib/Room.h"
+#include "renderer.h"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
@@ -48,13 +42,13 @@ int main(int argc, char* args[]){
 	double delta = 0;
 	double framerate = 30.0; //Set framerate here
     SDL_Window* window = NULL;
-    SDL_Renderer* renderer = initRender(window);
+    renderer = initRender(window);
 
     bool quit = false;
     SDL_Event e;
 	//Typically set up room manager here
-    //RoomManager manager;
-    //manager.create(renderer);
+    RoomManager manager;
+    manager.create();
 
     while(!quit){
 		a = SDL_GetTicks();
@@ -66,9 +60,12 @@ int main(int argc, char* args[]){
                 	quit = true;
             	}
 				//Handle user input here via SDL2 input handler, send this to manager
+
         	}
 			//Draw room manager here
-        	//manager.draw(renderer);
+			
+			manager.update(0);
+        	manager.draw();
         	SDL_RenderPresent(renderer);
 		}
     }
