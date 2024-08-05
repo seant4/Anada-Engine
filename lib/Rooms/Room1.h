@@ -1,7 +1,7 @@
 #pragma once
 #include "../Room.h"
-#include "../Object.h"
-#include "../Objects/Player.h"
+#include "../Objects/Dude.h"
+#include "../Modules/Visuals/fade.h"
 
 class Room;
 
@@ -10,8 +10,8 @@ class Room1: public Room{
     	SDL_Texture* background;
         Room1();
 		~Room1();
-		Player* player;
-		Object* floor;
+		Dude d;
+		Fade f;
 		int inputArray[5];
         void create();
         void update(int key) override;

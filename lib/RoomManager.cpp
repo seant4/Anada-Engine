@@ -5,27 +5,25 @@
 #include "roomstate.h"
 
 // Include any rooms here
-#include "./Rooms/Room1.h"
+#include "./Rooms/ExRoom.h"
 
 RoomManager::~RoomManager(){
-	delete room1;
 }
 
 void RoomManager::update(int key){
-	room1->update(key);
+	updateExRoom(&exroom, key);
 }
 
 void RoomManager::create(){
     //Room manager logic
 	// Add roomes here:
-	room1 = new Room1();
-    room1->create();
+	createExRoom(&exroom);
 
 }
 void RoomManager::draw(){
 	// Draw room based on state:
 	if(roomState == 1){
-		room1->draw();
+		drawExRoom(&exroom);
 	}else if(roomState == 2){
 	}
 }

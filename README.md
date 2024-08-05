@@ -1,11 +1,14 @@
 # Anada Engine
 Anada Engine is a game engine written in C++ on top of the SDL2 library. The goal is to create a simple and easy to use game engine for rapid development of 2D games.
+
+## Currently migrating to functional only
+
 ## Features:
 - 2D Graphics
 - I/O
 - Collision Detection
 - Physics
-- Animatoin
+- Animation
 - Text
 
 ## Workflow:
@@ -22,7 +25,7 @@ From here, the idea is to use the built in rooms and objects class to add your o
 ## TODO:
 - ~~Physics~~
 - ~~Sprite integration~~
-- Animation
-- Sound
-- UI
+- ~~Animation~~
+- ~~Sound~~
+- ~~UI~~
 

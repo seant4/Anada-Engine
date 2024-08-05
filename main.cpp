@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
-#include "./lib/Object.h"
 #include "./lib/RoomManager.h"
 #include "./lib/Room.h"
 #include "renderer.h"
@@ -43,6 +42,7 @@ int main(int argc, char* args[]){
 	double framerate = 30.0; //Set framerate here
     SDL_Window* window = NULL;
     renderer = initRender(window);
+	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
     bool quit = false;
     SDL_Event e;

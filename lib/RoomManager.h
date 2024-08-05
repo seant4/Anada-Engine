@@ -1,13 +1,12 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <vector>
-#include "Object.h"
 // Include rooms you create here
 /* Example:
 #include "./Rooms/Room2.h"
 */
 
-#include "./Rooms/Room1.h"
+#include "./Rooms/ExRoom.h"
 
 class RoomManager {
     public:
@@ -16,7 +15,7 @@ class RoomManager {
             Room1* room1;
 		    Room2* room2;
         */
-		Room1* room1;
+		ExRoom exroom;
         // Number of rooms
         int n;
 		~RoomManager();
