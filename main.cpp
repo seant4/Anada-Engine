@@ -3,8 +3,7 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
-#include "./lib/RoomManager.h"
-#include "./lib/Room.h"
+#include "./lib/Manager.h"
 #include "renderer.h"
 
 #define SCREEN_WIDTH 1280
@@ -47,9 +46,8 @@ int main(int argc, char* args[]){
     bool quit = false;
     SDL_Event e;
 	//Typically set up room manager here
-    RoomManager manager;
-    manager.create();
-
+	Manager manager;
+	createManager(&manager);
     while(!quit){
 		a = SDL_GetTicks();
 		delta = a - b;
@@ -63,9 +61,8 @@ int main(int argc, char* args[]){
 
         	}
 			//Draw room manager here
-			
-			manager.update(0);
-        	manager.draw();
+			updateManager(&manager, 0);
+			drawManager(&manager);
         	SDL_RenderPresent(renderer);
 		}
     }
