@@ -39,10 +39,10 @@ int main(int argc, char* args[]){
 	unsigned int b = SDL_GetTicks();
 	double delta = 0;
 	double framerate = 30.0; //Set framerate here
-    SDL_Window* window = NULL;
     renderer = initRender(window);
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
+	SDL_RenderSetLogicalSize(renderer, 1280, 720)
     bool quit = false;
     SDL_Event e;
 	//Typically set up room manager here
