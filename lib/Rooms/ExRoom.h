@@ -2,7 +2,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <vector>
-#include "../Objects/Dude.h"
+#include "../Entities/Dude.h"
 #include "../Modules/Visuals/fade.h"
 
 struct ExRoom {

@@ -2,7 +2,7 @@
 #include "../../renderer.h"
 #include "../Modules/Visuals/createTexture.h"
 #include "../Modules/Visuals/fade.h"
-#include "../Objects/Dude.h"
+#include "../Entities/Dude.h"
 
 void createExRoom(ExRoom* room){
     room->background = createTexture("./assets/sprites/background.bmp");
@@ -20,7 +20,8 @@ void drawExRoom(ExRoom* room){
 	dstrect.x += 1280;
 	SDL_RenderCopy(renderer, room->clouds, NULL, &dstrect);
     SDL_RenderCopy(renderer, room->background, NULL, NULL);
-    drawDude(room->d);
+	room->d.draw();
+    //drawDude(room->d);
     drawFade(&(room->f));
 }
 
@@ -30,5 +31,6 @@ void updateExRoom(ExRoom* room, int key){
 		room->scrollingOffset = 0;
 	}
     updateFade(&(room->f));
-    updateDude(&(room->d));
+	room->d.update();
+    //updateDude(&(room->d));
 }
