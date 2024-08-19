@@ -42,7 +42,7 @@ int main(int argc, char* args[]){
     renderer = initRender(window);
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
-	SDL_RenderSetLogicalSize(renderer, 1280, 720)
+	SDL_RenderSetLogicalSize(renderer, 1280, 720);
     bool quit = false;
     SDL_Event e;
 	//Typically set up room manager here
