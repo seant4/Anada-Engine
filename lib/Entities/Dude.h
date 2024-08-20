@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
 #include "Entity.h"
-struct Dude : public Entity{
+struct Dude{
+	Entity e;
 	int o; //Spritesheet offset
 	int a; //Animation speed
 	int f; //Animation frame

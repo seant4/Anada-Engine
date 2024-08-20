@@ -16,8 +16,8 @@ void Dude::draw(){
 	 * srcrect = array containing the source position of sprite in sprite sheet
 	 * dstrect = array containing the destination position of sprite on screen
 	 */
-	int srcrect[] = {o,a*h,w,h};
-	int dstrect[] = {x,y,w,h};
+	int srcrect[] = {o,a*e.h,e.w,e.h};
+	int dstrect[] = {e.x,e.y,e.w,e.h};
 	renderSprite(srcrect, dstrect, texture);
 }
 
@@ -48,20 +48,20 @@ void Dude::update(){
 	 * 	though, it will still be affected by phsysics. This could be updated to apply a 
 	 * 	horizontal or vertical force based on player input
 	 */
-	std::vector<int> acc = entityPhysics(x,y, vel, std::vector<int>{0,0});
+	std::vector<int> acc = entityPhysics(e.x,e.y, vel, std::vector<int>{0,0});
 
 	/* By applying the physics to a different object, we can check if it collides with the floor, and 
 	 * update our current objects position accordingly
 	 */
-	int x_fut = acc[0] + x;
-	int y_fut = acc[1] + y;
-	if(rectCollision(x_fut, y_fut, w, h, 0,720,1280,1)){ // If we collide with the floor
+	int x_fut = acc[0] + e.x;
+	int y_fut = acc[1] + e.y;
+	if(rectCollision(x_fut, y_fut, e.w, e.h, 0,720,1280,1)){ // If we collide with the floor
 		vel=std::vector<int>{acc[0], 0}; //Move in the x direction, but halt our Y velocity
-		x = x_fut;
+		e.x = x_fut;
 	}else{ //We must be in the air
 		vel = acc; // Update our velocity
-		x = x_fut; // Set our positino to the newly calculated ones
-		y = y_fut;
+		e.x = x_fut; // Set our positino to the newly calculated ones
+		e.y = y_fut;
 	}
 }
 
